@@ -1,0 +1,12 @@
+alter table contract
+add vurma  as (amount*commission);
+
+alter table contract
+add comm as (amount*commission/100);
+
+alter table contract
+add  changable as (case when amount<300000 then 'bronze'
+when 300000<amount and amount<750000 then 'silver'
+when 750000<amount and amount<900000 then 'gold'
+when amount>900000 then 'platinium'
+end  );
